@@ -4,7 +4,9 @@ Building Supportable Systems
 Part 1 - Package Management
 ---------------------------
 
+```
 Install-Package Humanizer
+```
 
 ```
 int someNumber = 1234;
@@ -35,6 +37,10 @@ Part 2 - Logging
 ----------------
 
 ```
+Install-Package Serilog
+```
+
+```
 Log.Logger = new LoggerConfiguration()
     .WriteTo.ColoredConsole()
     .WriteTo.RollingFile(@”C:\Jobs\Logs\Log-{Date}.txt")
@@ -50,8 +56,18 @@ Log.Information("Processed order {orderId} by {@customer}", order.Id, customer);
 Part 3 - Log Management
 -----------------------
 
+```
+Install-Package Serilog
+Install-Package Serilog.Sinks.Seq
+```
+
+
 Part 4 - Metrics
 ----------------
+
+```
+Install-Package Metrics.Net
+```
 
 ```
 Metric.Config
@@ -77,6 +93,10 @@ Part 5 - Monitoring
 -------------------
 
 ```
+Install-Package Metrics.Net
+```
+
+```
 public class DatabaseHealthCheck : HealthCheck
 {
     private readonly IDatabase database;
@@ -100,8 +120,22 @@ public class DatabaseHealthCheck : HealthCheck
 Part 6 - Diagnostics
 --------------------
 
+```
+Install-Package Glimpse
+Install-Package Glimpse.AspNet
+Install-Package Glimpse.Mvc5
+Install-Package Glimpse.EF6
+Install-Package Glimpse-Knockout
+```
+
+
 Part 7 - Unit Testing
 ---------------------
+
+```
+Install-Package NUnit
+Install-Package Shouldly
+```
 
 ```
 [TestFixture]
@@ -134,6 +168,10 @@ public void ShouldBe()
 
 Part 8 - Testability (IOC)
 --------------------------
+
+```
+Install-Package Autofac
+```
 
 ```
 var builder = new ContainerBuilder();
