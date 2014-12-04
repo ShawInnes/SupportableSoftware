@@ -6,6 +6,7 @@ Part 1 - Package Management
 
 Install-Package Humanizer
 
+```
 int someNumber = 1234;
 Console.WriteLine(someNumber.ToWords());
 Console.WriteLine();
@@ -28,21 +29,23 @@ Console.WriteLine(errorText.ToQuantity(1));
 Console.WriteLine(errorText.ToQuantity(2));
 
 Console.WriteLine(errorText.ToQuantity(3, ShowQuantityAs.Words));
+```
 
 Part 2 - Logging
 ----------------
 
+```
 Log.Logger = new LoggerConfiguration()
     .WriteTo.ColoredConsole()
-    .WriteTo.RollingFile(@îC:\Jobs\Logs\Log-{Date}.txt")
+    .WriteTo.RollingFile(@‚ÄùC:\Jobs\Logs\Log-{Date}.txt")
     .CreateLogger();
 
-var order = new { Id = 123, CustomerId = "JGî, Total = 123.5 };
+var order = new { Id = 123, CustomerId = "JG‚Äù, Total = 123.5 };
 
 var customer = new Customer { Id = "JG", Name = "John" };
  
 Log.Information("Processed order {orderId} by {@customer}", order.Id, customer);
-
+```
 
 Part 3 - Log Management
 -----------------------
@@ -50,6 +53,7 @@ Part 3 - Log Management
 Part 4 - Metrics
 ----------------
 
+```
 Metric.Config
     .WithHttpEndpoint("http://localhost:1234/")
     .WithAllCounters();
@@ -67,10 +71,12 @@ public void Process(string inputString)
     }
     this.counter.Decrement();
 }
+```
 
 Part 5 - Monitoring
 -------------------
 
+```
 public class DatabaseHealthCheck : HealthCheck
 {
     private readonly IDatabase database;
@@ -89,6 +95,7 @@ public class DatabaseHealthCheck : HealthCheck
         return HealthCheckResult.Healthy();
     }
 }
+```
 
 Part 6 - Diagnostics
 --------------------
@@ -96,6 +103,7 @@ Part 6 - Diagnostics
 Part 7 - Unit Testing
 ---------------------
 
+```
 [TestFixture]
 public class TestClass
 {
@@ -119,14 +127,15 @@ public class TestClass
 [Test]
 public void ShouldBe()
 {
-    var theSimpsonsCat = new Cat() { Name = "SantasÖ helper" };
+    var theSimpsonsCat = new Cat() { Name = "Santas‚Ä¶ helper" };
     theSimpsonsCat.Name.ShouldBe("Snowball 2");
 }
-
+```
 
 Part 8 - Testability (IOC)
 --------------------------
 
+```
 var builder = new ContainerBuilder();
  
 // Register individual components
@@ -144,9 +153,9 @@ builder.RegisterAssemblyTypes(myAssembly)
        .AsImplementedInterfaces();
  
 var container = builder.Build();
+```
 
-
-
+```
 public class MissileController
 {
   private IMissileSilo _silo;
@@ -161,9 +170,12 @@ public class MissileController
     this._logger = logger;
   }
 }
+```
 
+```
 using (var container = builder.Build())
 {
   var controller = container.Resolve<MissileController>();
   controller.FireZeMissiles();
 }
+```
