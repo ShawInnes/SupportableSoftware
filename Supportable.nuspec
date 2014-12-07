@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Supportable</id>
+    <version>1.0.0</version>
+    <title>Supportable</title>
+    <authors>Shaw Innes</authors>
+    <owners>Shaw Innes</owners>
+    <description>Some NuGet dependencies for supportable software systems</description>
+    <language>en-US</language>
+	<dependencies>
+		<dependency id="Autofac" version="3.5.2" />
+		<dependency id="Humanizer" version="1.31.0" />
+		<dependency id="Serilog" version="1.4.39" />
+		<dependency id="Serilog.Sinks.Seq" version="1.4.39" />
+		<dependency id="Metrics.NET" version="0.2.12" />
+	</dependencies>
+  </metadata>
+  <files>
+	<file src="SupportableBootstrapper.txt" target="content" /> 
+  </files>
+</package>

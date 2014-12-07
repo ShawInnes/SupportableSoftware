@@ -3,12 +3,13 @@ Building Supportable Systems
 
 Part 1 - Package Management
 ---------------------------
+http://shawinnes.com/building-supportable-systems/
 
-```
+```powershell
 Install-Package Humanizer
 ```
 
-```
+```csharp
 int someNumber = 1234;
 Console.WriteLine(someNumber.ToWords());
 Console.WriteLine();
@@ -33,45 +34,83 @@ Console.WriteLine(errorText.ToQuantity(2));
 Console.WriteLine(errorText.ToQuantity(3, ShowQuantityAs.Words));
 ```
 
+We can also create our own NuGet packages.  I'm going to create a package to contain all the dependencies for the rest of these samples:
+ 
+```xml
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Supportable</id>
+    <version>1.0.0</version>
+    <title>Supportable</title>
+    <authors>Shaw Innes</authors>
+    <owners>Shaw Innes</owners>
+    <description>Some NuGet dependencies for supportable software systems</description>
+    <language>en-US</language>
+	<dependencies>
+		<dependency id="Autofac" version="3.5.2" />
+		<dependency id="Humanizer" version="1.31.0" />
+		<dependency id="Serilog" version="1.4.39" />
+		<dependency id="Serilog.Sinks.Seq" version="1.4.39" />
+		<dependency id="Metrics.NET" version="0.2.12" />
+	</dependencies>
+  </metadata>
+  <files>
+	<file src="SupportableBootstrapper.txt" target="content" /> 
+  </files>
+</package>
+```
+
 Part 2 - Logging
 ----------------
 
-```
+```powershell
 Install-Package Serilog
 ```
 
-```
+```csharp
 Log.Logger = new LoggerConfiguration()
     .WriteTo.ColoredConsole()
-    .WriteTo.RollingFile(@”C:\Jobs\Logs\Log-{Date}.txt")
     .CreateLogger();
 
-var order = new { Id = 123, CustomerId = "JG”, Total = 123.5 };
+// ...
 
-var customer = new Customer { Id = "JG", Name = "John" };
- 
-Log.Information("Processed order {orderId} by {@customer}", order.Id, customer);
+Log.Information("Processed order {@order}", order);
 ```
 
 Part 3 - Log Management
 -----------------------
 
-```
+```powershell
 Install-Package Serilog
 Install-Package Serilog.Sinks.Seq
 ```
 
+```csharp
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.ColoredConsole()
+    .WriteTo.Seq("http://localhost:5341/")
+    .Enrich.WithProperty("ComputerName", System.Net.Dns.GetHostName())
+    .CreateLogger();
+
+// ...
+
+using (LogContext.PushProperty("CorrelationId", Guid.NewGuid()))
+{
+	Log.Information("Processed order {@order}", order);
+}
+```
 
 Part 4 - Metrics
 ----------------
 
-```
+```powershell
 Install-Package Metrics.Net
 ```
 
-```
+```csharp
 Metric.Config
-    .WithHttpEndpoint("http://localhost:1234/")
+    .WithHttpEndpoint("http://localhost:1234/metrics/")
     .WithAllCounters();
 
 private readonly Timer timer = Metric.Timer("Requests", Unit.Requests);
@@ -92,11 +131,20 @@ public void Process(string inputString)
 Part 5 - Monitoring
 -------------------
 
-```
+```powershell
 Install-Package Metrics.Net
 ```
 
+```csharp
+Metric.Config
+    .WithHttpEndpoint("http://localhost:1234/metrics/")
+    .WithAllCounters();
+
+HealthChecks.RegisterHealthCheck(new FileHealthCheck());
+HealthChecks.RegisterHealthCheck(new DiskSpaceHealthCheck());
 ```
+
+```csharp
 public class DatabaseHealthCheck : HealthCheck
 {
     private readonly IDatabase database;
@@ -120,7 +168,7 @@ public class DatabaseHealthCheck : HealthCheck
 Part 6 - Diagnostics
 --------------------
 
-```
+```powershell
 Install-Package Glimpse
 Install-Package Glimpse.AspNet
 Install-Package Glimpse.Mvc5
@@ -128,16 +176,15 @@ Install-Package Glimpse.EF6
 Install-Package Glimpse-Knockout
 ```
 
-
 Part 7 - Unit Testing
 ---------------------
 
-```
+```powershell
 Install-Package NUnit
 Install-Package Shouldly
 ```
 
-```
+```csharp
 [TestFixture]
 public class TestClass
 {
@@ -169,11 +216,11 @@ public void ShouldBe()
 Part 8 - Testability (IOC)
 --------------------------
 
-```
+```powershell
 Install-Package Autofac
 ```
 
-```
+```csharp
 var builder = new ContainerBuilder();
  
 // Register individual components
@@ -193,7 +240,7 @@ builder.RegisterAssemblyTypes(myAssembly)
 var container = builder.Build();
 ```
 
-```
+```csharp
 public class MissileController
 {
   private IMissileSilo _silo;
@@ -210,7 +257,7 @@ public class MissileController
 }
 ```
 
-```
+```csharp
 using (var container = builder.Build())
 {
   var controller = container.Resolve<MissileController>();

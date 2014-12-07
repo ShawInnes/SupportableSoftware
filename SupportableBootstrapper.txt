@@ -1,0 +1,21 @@
+
+namespace Supportable
+{
+    public static class Bootstrapper
+    {
+        public static void InitLogging()
+        {
+            // Serilog
+        }
+
+        public static void InitMetrics()
+        {
+            // Metrics
+        }
+
+        public static void InitIOC()
+        {
+            // Autofac
+        }
+    }
+}

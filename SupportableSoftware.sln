@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Part 1", "Part 1", "{A1F012E9-1CB0-4D27-B6D7-030FF75A5E71}"
 EndProject
@@ -40,11 +40,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Part 9", "Part 9", "{FFEB1BF1-F3B9-4940-B309-539CA224C253}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartUnitTestsDemo", "SmartUnitTestsDemo\SmartUnitTestsDemo.csproj", "{73D9AF76-3C61-4FF9-B87F-F1292F37FDA9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartUnitTestsDemo.Tests", "SmartUnitTestsDemo.Tests\SmartUnitTestsDemo.Tests.csproj", "{3DE84DF8-4376-4D03-9B06-29CB547FDDCE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{2998E4F3-AC95-44E6-AC63-3B63B829BAF1}"
+	ProjectSection(SolutionItems) = preProject
+		Supportable.nuspec = Supportable.nuspec
+		Supportable.Web.nuspec = Supportable.Web.nuspec
+		SupportableBootstrapper.txt = SupportableBootstrapper.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,14 +85,6 @@ Global
 		{B99E3060-9135-44EC-8883-3200426BEDFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99E3060-9135-44EC-8883-3200426BEDFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99E3060-9135-44EC-8883-3200426BEDFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{73D9AF76-3C61-4FF9-B87F-F1292F37FDA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73D9AF76-3C61-4FF9-B87F-F1292F37FDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73D9AF76-3C61-4FF9-B87F-F1292F37FDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73D9AF76-3C61-4FF9-B87F-F1292F37FDA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DE84DF8-4376-4D03-9B06-29CB547FDDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DE84DF8-4376-4D03-9B06-29CB547FDDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DE84DF8-4376-4D03-9B06-29CB547FDDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DE84DF8-4376-4D03-9B06-29CB547FDDCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,7 +98,6 @@ Global
 		{A628F2A5-16D7-4E58-8A29-87F2E0F21779} = {2CC72518-EA45-46EE-81E2-90B2103500B0}
 		{5C1BA871-C545-4E17-891A-FA0366549F38} = {5E6D5100-0E99-4FE7-A311-FB7020305012}
 		{B99E3060-9135-44EC-8883-3200426BEDFE} = {240C3A51-24E2-443A-A878-5BC9E351E958}
-		{73D9AF76-3C61-4FF9-B87F-F1292F37FDA9} = {FFEB1BF1-F3B9-4940-B309-539CA224C253}
-		{3DE84DF8-4376-4D03-9B06-29CB547FDDCE} = {FFEB1BF1-F3B9-4940-B309-539CA224C253}
+		{2998E4F3-AC95-44E6-AC63-3B63B829BAF1} = {A1F012E9-1CB0-4D27-B6D7-030FF75A5E71}
 	EndGlobalSection
 EndGlobal

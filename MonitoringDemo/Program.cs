@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Metrics;
+using MetricsDemo;
 
 namespace MonitoringDemo
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
+            Metric.Config
+                .WithHttpEndpoint("http://localhost:1234/metrics/")
+                .WithAllCounters();
+
+            HealthChecks.RegisterHealthCheck(new FileHealthCheck());
+            HealthChecks.RegisterHealthCheck(new DiskSpaceHealthCheck());
 
             Console.WriteLine("Done.");
             Console.ReadLine();
