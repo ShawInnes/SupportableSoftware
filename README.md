@@ -61,6 +61,24 @@ We can also create our own NuGet packages.  I'm going to create a package to con
 </package>
 ```
 
+Then you can build a package using
+
+```
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\SupportableSoftware> nuget pack Supportable.nuspec
+Attempting to build package from 'Supportable.nuspec'.
+Successfully created package 'C:\SupportableSoftware\Supportable.1.0.0.nupkg'.
+```
+
+This package can then be uploaded to a nuget feed server, or just placed into a local folder and consumed in other projects:
+
+```
+Install-Package Supportable
+```
+
+
 Part 2 - Logging
 ----------------
 
