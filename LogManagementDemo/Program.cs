@@ -12,6 +12,7 @@ namespace LogManagementDemo
                 .WriteTo.ColoredConsole()
                 .WriteTo.Seq("http://localhost:5341/")
                 .Enrich.WithProperty("ComputerName", System.Net.Dns.GetHostName())
+                .Enrich.FromLogContext()
                 .CreateLogger();
 
             // We can push extra properties into our log context for a given scope
@@ -26,7 +27,7 @@ namespace LogManagementDemo
                         Address = "123 Some Street"
                     }
                 };
-
+                
                 // Simple log4net/nlog replacement
                 Log.Information("Processed order {orderId} by {customer}", order.Id, order.Customer);
 

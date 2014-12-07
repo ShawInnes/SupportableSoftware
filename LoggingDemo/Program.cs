@@ -14,7 +14,7 @@ namespace LoggingDemo
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.ColoredConsole()
                 .CreateLogger();
-
+            
             Order order = new Order
             {
                 Id = 123,
@@ -32,6 +32,7 @@ namespace LoggingDemo
             Log.Information("Processed order {orderId} by {@customer}", order.Id, order.Customer);
 
             // Or just serialize the whole order
+            Log.Information("Processed order {order}", order);
             Log.Information("Processed order {@order}", order);
 
             try

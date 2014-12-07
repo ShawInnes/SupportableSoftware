@@ -109,6 +109,7 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.ColoredConsole()
     .WriteTo.Seq("http://localhost:5341/")
     .Enrich.WithProperty("ComputerName", System.Net.Dns.GetHostName())
+    .Enrich.FromLogContext()
     .CreateLogger();
 
 // ...
