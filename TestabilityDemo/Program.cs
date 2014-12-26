@@ -22,14 +22,8 @@ namespace TestabilityDemo
 
             var builder = new ContainerBuilder();
 
-            // Scan an assembly for components
+            // Scan this assembly for components
             builder.RegisterAssemblyModules(typeof(Program).Assembly);
-
-            builder.RegisterType<SelfIncrementingTestableClock>()
-                .AsImplementedInterfaces();
-
-            builder.RegisterType<HealthCheckTask>()
-                .AsSelf();
 
             using (var container = builder.Build())
             {
@@ -46,7 +40,9 @@ namespace TestabilityDemo
                     clock.SetClock(DateTimeOffset.Now);
 
                     Log.Information("Now it is {Time}", clock.Now);
+
                     Log.Information("Now it is {Time}", clock.Now);
+                    
                     Log.Information("Now it is {Time}", clock.Now);
 
                     Console.WriteLine("Done.");
