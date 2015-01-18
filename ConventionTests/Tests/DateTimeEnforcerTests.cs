@@ -1,14 +1,15 @@
 using System.Linq;
+using ConventionTests.Infrastructure;
 using ConventionTestsDemo.ViewModels;
 using Enforcer.Core;
 using Enforcer.Core.Rules;
 using NUnit.Framework;
 using Should;
 
-namespace ConventionTests
+namespace ConventionTests.Tests
 {
     [TestFixture]
-    public class DateTimeConventionTests
+    public class DateTimeEnforcerTests
     {
         private ConventionEnforcer _enforcer;
         private Violation[] _violations;
@@ -24,7 +25,7 @@ namespace ConventionTests
             var dateTimeOffsetUtcNowRule = new MethodCallRule("System.DateTimeOffset::get_UtcNow()");
 
             _enforcer = new ConventionEnforcerBuilder()
-                .WithTypeResolver(new MyTypeResolver())
+                .WithTypeResolver(new DemoTypeResolver())
                 .AndTheseRules(dateTimeRule,
                     dateTimeNowRule,
                     dateTimeUtcNowRule,

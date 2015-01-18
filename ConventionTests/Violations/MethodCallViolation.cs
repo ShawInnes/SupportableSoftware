@@ -1,13 +1,13 @@
 ﻿using Enforcer.Core.Rules;
 
-namespace ConventionTests
+namespace ConventionTests.Violations
 {
-    public class TypeNameViolation : Violation
+    public class MethodCallViolation : Violation
     {
         private readonly string methodName;
         private readonly string typeName;
 
-        public TypeNameViolation(string methodName, string typeName)
+        public MethodCallViolation(string methodName, string typeName)
         {
             this.methodName = methodName;
             this.typeName = typeName;
@@ -15,7 +15,7 @@ namespace ConventionTests
 
         public override string Message
         {
-            get { return string.Format("Illegal use of Type {0} in {1}", typeName, methodName); }
+            get { return string.Format("Illegal use of Method Call {0} in {1}", typeName, methodName); }
         }
     }
 }

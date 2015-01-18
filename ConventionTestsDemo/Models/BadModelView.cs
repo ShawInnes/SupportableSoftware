@@ -8,5 +8,9 @@ namespace ConventionTestsDemo.Models
 {
     public class BadModelView
     {
+        public BadModelView()
+        {
+            
+        }
     }
 }

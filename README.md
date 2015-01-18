@@ -283,3 +283,30 @@ using (var container = builder.Build())
   controller.FireZeMissiles();
 }
 ```
+
+Part 9 - Approval Tests
+-----------------------
+
+Coming soon...
+https://github.com/approvals/ApprovalTests.Net
+
+
+```powershell
+Install-Package ApprovalTests
+```
+
+
+Part 10 - Convention Tests
+--------------------------
+
+```powershell
+Install-Package TestStack.ConventionTests
+Install-Package Enforcer
+```
+
+Part 11 - Exception Handling With Polly
+---------------------------------------
+
+```powershell
+Install-Package Polly
+```

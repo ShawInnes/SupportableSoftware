@@ -79,13 +79,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyTypeResolver.cs" />
-    <Compile Include="DateTimeConventionTests.cs" />
-    <Compile Include="MethodCallRule.cs" />
-    <Compile Include="MethodCallViolation.cs" />
+    <Compile Include="Infrastructure\DemoTypeResolver.cs" />
+    <Compile Include="Tests\DateTimeEnforcerTests.cs" />
+    <Compile Include="Infrastructure\MethodCallRule.cs" />
+    <Compile Include="Violations\MethodCallViolation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeNameRule.cs" />
-    <Compile Include="TypeNameViolation.cs" />
+    <Compile Include="Infrastructure\TypeNameRule.cs" />
+    <Compile Include="Violations\TypeNameViolation.cs" />
+    <Compile Include="Infrastructure\DemoProjectProvider.cs" />
+    <Compile Include="Conventions\NotHavePreOrPostBuildActionsConvention.cs" />
+    <Compile Include="Infrastructure\ProjectFileBuildAction.cs" />
+    <Compile Include="Infrastructure\ProjectFileBuildActions.cs" />
+    <Compile Include="Tests\ProjectFileConventionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using ConventionTests.Violations;
 using Enforcer.Core.Rules;
 using Enforcer.Core.Rules.Custom;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
-namespace ConventionTests
+namespace ConventionTests.Infrastructure
 {
     public class TypeNameRule : CustomRuleWithMonoCecil
     {
