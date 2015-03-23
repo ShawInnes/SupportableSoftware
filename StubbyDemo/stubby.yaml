@@ -1,0 +1,26 @@
+﻿- request:
+    url: /hello
+    method: GET
+  response:
+      status: 200
+      latency: 1800
+      headers:
+         content-type: application/xml
+         server: stubbedServer/4.2
+      body: >
+         <!xml >
+         <responseXML>
+            <content></content>
+         </responseXML>
+-  request:
+      url: /json
+      method: GET
+   response:
+      status: 200
+      latency: 120
+      headers:
+         content-type: application/json
+         server: stubbedServer/4.2
+      body: > 
+        { "response" : "OK" }
+
