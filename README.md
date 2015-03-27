@@ -284,15 +284,11 @@ using (var container = builder.Build())
 }
 ```
 
-Part 9 - Approval Tests
------------------------
-
-Coming soon...
-https://github.com/approvals/ApprovalTests.Net
-
+Part 9 - Stubby
+---------------
 
 ```powershell
-Install-Package ApprovalTests
+Install-Package Stubby
 ```
 
 
@@ -309,4 +305,21 @@ Part 11 - Exception Handling With Polly
 
 ```powershell
 Install-Package Polly
+```
+
+Part 12 - Swagger/Swashbuckle, Generating API Documentation
+
+```powershell
+Install-Package Swashbuckle.Core
+```
+
+Part 13 - Approval Tests
+-----------------------
+
+Coming soon...
+https://github.com/approvals/ApprovalTests.Net
+
+
+```powershell
+Install-Package ApprovalTests
 ```
