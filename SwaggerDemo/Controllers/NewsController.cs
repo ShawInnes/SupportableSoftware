@@ -7,6 +7,10 @@ namespace SwaggerDemo.Controllers
 {
     public class NewsController : ApiController
     {
+        /// <summary>
+        /// Get a list of current News Items
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<NewsItem> Get()
         {
             return new List<NewsItem>
@@ -28,9 +32,14 @@ namespace SwaggerDemo.Controllers
             };
         }
 
+        /// <summary>
+        /// Return a specific News Item by ID
+        /// </summary>
+        /// <param name="id">ID of the News Item to retrieve</param>
+        /// <returns>News Item</returns>
         public NewsItem Get(int id)
         {
-            return new NewsItem {Id = id};
+            return new NewsItem { Id = id };
         }
     }
 }

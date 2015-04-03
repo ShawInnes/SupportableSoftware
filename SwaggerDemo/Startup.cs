@@ -33,7 +33,7 @@ namespace SwaggerDemo
             config
                 .EnableSwagger(c =>
                 {
-                    c.SingleApiVersion("v1", "A title for your API");
+                    c.SingleApiVersion("v1", "API Name");
 
                     c.BasicAuth("basic")
                         .Description("Basic HTTP Authentication");
@@ -42,6 +42,8 @@ namespace SwaggerDemo
                         .Description("API Key Authentication")
                         .Name("apiKey")
                         .In("header");
+
+                    c.IncludeXmlComments(@"SwaggerDemo.XML");
                 })
                 .EnableSwaggerUi();
 

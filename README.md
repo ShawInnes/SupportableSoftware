@@ -78,7 +78,6 @@ This package can then be uploaded to a nuget feed server, or just placed into a 
 Install-Package Supportable
 ```
 
-
 Part 2 - Logging
 ----------------
 
@@ -184,7 +183,7 @@ public class DatabaseHealthCheck : HealthCheck
 }
 ```
 
-Part 6 - Diagnostics
+Part 6 - Debugging & Diagnostics
 --------------------
 
 ```powershell
@@ -195,45 +194,8 @@ Install-Package Glimpse.EF6
 Install-Package Glimpse-Knockout
 ```
 
-Part 7 - Unit Testing
----------------------
-
-```powershell
-Install-Package NUnit
-Install-Package Shouldly
-```
-
-```csharp
-[TestFixture]
-public class TestClass
-{
-    [TestCase]
-    public void AddTest()
-    {
-        MathsHelper helper = new MathsHelper();
-        int result = helper.Add(20, 10);
-        Assert.AreEqual(30, result);
-    }
-
-    [TestCase]
-    public void SubtractTest()
-    {
-        MathsHelper helper = new MathsHelper();
-        int result = helper.Subtract(20, 10);
-        Assert.AreEqual(10, result);
-    }
-}
-
-[Test]
-public void ShouldBe()
-{
-    var theSimpsonsCat = new Cat() { Name = "Santas… helper" };
-    theSimpsonsCat.Name.ShouldBe("Snowball 2");
-}
-```
-
-Part 8 - Testability (IOC)
---------------------------
+Part 7 - Modularity & Testability
+---------------------------------
 
 ```powershell
 Install-Package Autofac
@@ -284,15 +246,44 @@ using (var container = builder.Build())
 }
 ```
 
-Part 9 - Stubby
----------------
+Part 8 - Unit Tests
+-------------------
 
 ```powershell
-Install-Package Stubby
+Install-Package NUnit
+Install-Package Shouldly
 ```
 
+```csharp
+[TestFixture]
+public class TestClass
+{
+    [TestCase]
+    public void AddTest()
+    {
+        MathsHelper helper = new MathsHelper();
+        int result = helper.Add(20, 10);
+        Assert.AreEqual(30, result);
+    }
 
-Part 10 - Convention Tests
+    [TestCase]
+    public void SubtractTest()
+    {
+        MathsHelper helper = new MathsHelper();
+        int result = helper.Subtract(20, 10);
+        Assert.AreEqual(10, result);
+    }
+}
+
+[Test]
+public void ShouldBe()
+{
+    var theSimpsonsCat = new Cat() { Name = "Santas… helper" };
+    theSimpsonsCat.Name.ShouldBe("Snowball 2");
+}
+```
+
+Part 9 - Convention Tests
 --------------------------
 
 ```powershell
@@ -300,26 +291,109 @@ Install-Package TestStack.ConventionTests
 Install-Package Enforcer
 ```
 
-Part 11 - Exception Handling With Polly
----------------------------------------
+Part 10 - Acceptance Tests
+--------------------------
+
+```powershell
+Install-Package Specflow
+```
+
+Part 11 - Approval Tests
+-----------------------
+
+```powershell
+Install-Package ApprovalTests
+```
+
+Part 12 - Automation Tests
+--------------------------
+
+```powershell
+Install-Package AFrame
+```
+
+Part 13 - Exception Handling
+----------------------------
 
 ```powershell
 Install-Package Polly
 ```
 
-Part 12 - Swagger/Swashbuckle, Generating API Documentation
+Part 14 - Service Stubs
+----------------------
+
+```powershell
+Install-Package Stubby
+```
+
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        Stubby stubby = new Stubby(new Arguments
+        {
+            Data = "stubby.yaml",
+            Mute = false
+        });
+
+        stubby.Start();
+    }
+}
+```
+
+```yaml
+- request:
+    url: /hello
+    method: GET
+  response:
+      status: 200
+      latency: 1800
+      headers:
+         content-type: application/xml
+         server: stubbedServer/4.2
+      body: >
+         <!xml >
+         <responseXML>
+            <content></content>
+         </responseXML>
+-  request:
+      url: /json
+      method: GET
+   response:
+      status: 200
+      latency: 120
+      headers:
+         content-type: application/json
+         server: IIS/8.5
+      body: > 
+        { "response" : "OK" }
+
+```
+
+Part 15 - API Documentation
+---------------------------
 
 ```powershell
 Install-Package Swashbuckle.Core
 ```
 
-Part 13 - Approval Tests
------------------------
+OWIN Startup.cs
+```csharp
+    config
+    .EnableSwagger(c =>
+    {
+        c.SingleApiVersion("v1", "API Name");
 
-Coming soon...
-https://github.com/approvals/ApprovalTests.Net
+        c.BasicAuth("basic")
+            .Description("Basic HTTP Authentication");
 
+        c.ApiKey("apiKey")
+            .Description("API Key Authentication")
+            .Name("apiKey")
+            .In("header");
 
-```powershell
-Install-Package ApprovalTests
+        c.IncludeXmlComments(@"SwaggerDemo.XML");
+    })
+    .EnableSwaggerUi();
 ```
