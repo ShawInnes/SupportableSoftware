@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Search", "Search", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-1">@Html.Label("Search")</div>
+        <div class="col-lg-3">@Html.Editor("searchString", new { id = "searchString" })</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <input type="submit" value="Search" id="searchButton" class="btn btn-default" />
+        </div>
+    </div>
+}
+

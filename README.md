@@ -309,8 +309,12 @@ Part 12 - Automation Tests
 --------------------------
 
 ```powershell
-Install-Package AFrame
+Install-Package AFrame.Web
+Install-Package AFrame.Desktop
 ```
+
+http://aframe.github.io/
+
 
 Part 13 - Exception Handling
 ----------------------------
