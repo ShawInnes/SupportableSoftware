@@ -7,20 +7,26 @@ namespace TestabilityTests
     [TestFixture]
     public class BonusPizza
     {
+        public class PriceCalculator
+        {
+            public string GetPrice()
+            {
+                var day = DateTime.Now.DayOfWeek;
+
+                if (day == DayOfWeek.Tuesday)
+                {
+                    return "half price";
+                }
+
+                return "full price";
+            }
+        }
+
         [Test]
         public void FullPrice()
         {
-            var price = string.Empty;
-
-            var day = DateTime.Now.DayOfWeek;
-            if (day == DayOfWeek.Tuesday)
-            {
-                price = "half price";
-            }
-            else if (day != DayOfWeek.Tuesday)
-            {
-                price = "full price";
-            }
+            var calculator = new PriceCalculator();
+            var price = calculator.GetPrice();
 
             price.ShouldBe("full price");
         }
@@ -28,17 +34,8 @@ namespace TestabilityTests
         [Test]
         public void HalfPriceOnTuesdays()
         {
-            var price = string.Empty;
-         
-            var day = DateTime.Now.DayOfWeek;
-            if (day == DayOfWeek.Tuesday)
-            {
-                price = "half price";
-            }
-            else if (day != DayOfWeek.Tuesday)
-            {
-                price = "full price";
-            }
+            var calculator = new PriceCalculator();
+            var price = calculator.GetPrice();
 
             price.ShouldBe("half price");
         }
