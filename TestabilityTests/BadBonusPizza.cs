@@ -5,7 +5,7 @@ using Shouldly;
 namespace TestabilityTests
 {
     [TestFixture]
-    public class BonusPizza
+    public class BadBonusPizza
     {
         public class PriceCalculator
         {
